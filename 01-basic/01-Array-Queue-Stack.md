@@ -1,4 +1,4 @@
-## 1.1 数据结构
+# 1. 数据结构
 
 [数组与字符串](https://leetcode-cn.com/leetbook/detail/array-and-string/)—>[队列和栈](https://leetcode-cn.com/leetbook/detail/queue-stack/)—>[链表](https://leetcode-cn.com/leetbook/detail/linked-list/) —> [二叉树](https://leetcode-cn.com/leetbook/detail/data-structure-binary-tree/)
 
@@ -75,21 +75,13 @@ Skip List: 在redis中应用， 对链表进行加速
 
 
 
-### Array
+# 2. Array 实战题目
 
--  **Array 实战题目**
--  https://leetcode-cn.com/problems/container-with-most-water/
--  https://leetcode-cn.com/problems/move-zeroes/
--  https://leetcode.com/problems/climbing-stairs/
--  [ https://leetcode-cn.com/problems/two-sum/](https://leetcode-cn.com/problems/two-sum/)  (两数之和)
--  [https://leetcode-cn.com/problems/3sum/ ](https://leetcode-cn.com/problems/3sum/)(高频老题） 
+-  https://leetcode-cn.com/problems/container-with-most-water/   （最大水面积）
 
-
-
-- 最大水面积
 
 ```java
-class Solution { //
+class Solution { //java实现
     public int maxArea(int[] height) {
         //最大水容量，双指针
         if (height == null || height.length==0) {
@@ -98,7 +90,7 @@ class Solution { //
         int max_area = 0;
         int area = 0;
         int j = height.length-1;
-        for (int i = 0; i < j; i++) {//可以考虑使用while循环！！！
+        for (int i = 0; i < j; i++) {//当不考虑i逐步递进时，可以考虑使用while循环！！！
             //i指头，j指尾
             area = (j-i) * Math.min(height[i],height[j]);
             //前边的大，则后边指针j前移
@@ -114,10 +106,10 @@ class Solution { //
     }
 }
 ```
-
-- 移动零
+-  https://leetcode-cn.com/problems/move-zeroes/
 
 ```java
+//java
 class Solution {
     public void moveZeroes(int[] nums)  {
         int length;
@@ -139,9 +131,20 @@ class Solution {
 }
 ```
 
-- 爬山中的斐波那切数列
+```python
+# python
+```
+
+```go
+// go
+```
+
+
+
+-  https://leetcode.com/problems/climbing-stairs/
 
 ```java
+//java
 class Solution {  //斐波那契数列
     protected int climbStairs(int n) {
         int f1 = 1;
@@ -163,15 +166,45 @@ class Solution {  //斐波那契数列
 }
 ```
 
-- 两数之和
+```python
+# python
+```
+
+```go
+// go
+```
+
+-  [ https://leetcode-cn.com/problems/two-sum/](https://leetcode-cn.com/problems/two-sum/)  (两数之和)
 
 ```java
+//java
+```
 
+```python
+# python
+```
+
+```go
+// go
+```
+
+-  [https://leetcode-cn.com/problems/3sum/ ](https://leetcode-cn.com/problems/3sum/)(高频老题） 
+
+```java
+//java
+```
+
+```python
+# python
+```
+
+```go
+// go
 ```
 
 
 
-### Linked List 实战题目
+# 3. Linked List 实战题目
 
 · https://leetcode.com/problems/reverse-linked-list/
 
@@ -183,7 +216,7 @@ class Solution {  //斐波那契数列
 
 · https://leetcode.com/problems/reverse-nodes-in-k-group/
 
-### 课后作业
+# 4. 课后作业
 
 · https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
 

@@ -39,9 +39,9 @@
 - 线段树
 - 堆
 
+![image-20200806200443056](https://cdn.jsdelivr.net/gh/lizhangjie316/img/2020/20200806200443.png)
 
-
-### Array
+### Array 实战题目
 
 -  **Array 实战题目**
 -  https://leetcode-cn.com/problems/container-with-most-water/
@@ -56,7 +56,7 @@
 
 · https://leetcode.com/problems/swap-nodes-in-pairs
 
-· https://leetcode.com/problems/linked-list-cycle  * 
+· https://leetcode.com/problems/linked-list-cycle     * 
 
 · https://leetcode.com/problems/linked-list-cycle-ii
 
