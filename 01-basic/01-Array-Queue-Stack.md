@@ -171,7 +171,9 @@ func max(a, b int) int{
 }
 ```
 
-
+```javascript
+//JavaScript
+```
 
 -  https://leetcode.com/problems/climbing-stairs/
 
@@ -206,6 +208,10 @@ class Solution {  //斐波那契数列
 // go
 ```
 
+```javascript
+//JavaScript
+```
+
 -  [ https://leetcode-cn.com/problems/two-sum/](https://leetcode-cn.com/problems/two-sum/)  (两数之和)
 
 ```java
@@ -220,6 +226,10 @@ class Solution {  //斐波那契数列
 // go
 ```
 
+```javascript
+//JavaScript
+```
+
 -  [https://leetcode-cn.com/problems/3sum/ ](https://leetcode-cn.com/problems/3sum/)(高频老题） 
 
 ```java
@@ -232,6 +242,10 @@ class Solution {  //斐波那契数列
 
 ```go
 // go
+```
+
+```javascript
+//JavaScript
 ```
 
 
