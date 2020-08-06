@@ -137,6 +137,38 @@ class Solution {
 
 ```go
 // go
+func maxArea(height []int) int {
+	if len(height) == 0{
+		return 0
+	}
+	i := 0
+	j := len(height) - 1
+	ans := 0
+	for i < j{
+		area := min(height[i], height[j]) * (j - i)
+		ans = max(ans, area)
+		if height[i] <= height[j]{
+			i += 1
+		}else{
+			j -= 1
+		}
+	}
+	return ans
+}
+
+func min(a, b int) int{
+	if a < b{
+		return a
+	}
+	return b
+}
+
+func max(a, b int) int{
+	if a > b{
+		return a
+	}
+	return b
+}
 ```
 
 
