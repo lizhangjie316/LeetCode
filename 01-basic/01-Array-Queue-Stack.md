@@ -106,34 +106,6 @@ class Solution { //java实现
     }
 }
 ```
--  https://leetcode-cn.com/problems/move-zeroes/
-
-```java
-//java
-class Solution {
-    public void moveZeroes(int[] nums)  {
-        int length;
-        if (nums == null || (length = nums.length) == 0) {
-            return;
-        }
-        int j = 0;
-        for (int i = 0; i < length; i++) {
-            //i进行后续探索，j进行延后的定位，始终指向下一个存储位置
-            if (nums[i] != 0) {//非0，则进行交换
-                if (i > j) {
-                    nums[j] = nums[i];
-                    nums[i] = 0;
-                }
-                j++;
-            }
-        }
-    }
-}
-```
-
-```python
-# python
-```
 
 ```go
 // go
@@ -168,6 +140,56 @@ func max(a, b int) int{
 		return a
 	}
 	return b
+}
+```
+
+
+-  https://leetcode-cn.com/problems/move-zeroes/
+
+```java
+//java
+class Solution {
+    public void moveZeroes(int[] nums)  {
+        int length;
+        if (nums == null || (length = nums.length) == 0) {
+            return;
+        }
+        int j = 0;
+        for (int i = 0; i < length; i++) {
+            //i进行后续探索，j进行延后的定位，始终指向下一个存储位置
+            if (nums[i] != 0) {//非0，则进行交换
+                if (i > j) {
+                    nums[j] = nums[i];
+                    nums[i] = 0;
+                }
+                j++;
+            }
+        }
+    }
+}
+```
+
+```python
+# python
+```
+
+```go
+// go
+func moveZeroes(nums []int)  {
+	if len(nums) < 2 {
+		return
+	}
+
+	last := -1
+	for i, n := range nums {
+		if n == 0 && last == -1 {
+			last = i
+		}
+		if n != 0 && last != -1 {
+			nums[last], nums[i] = nums[i], nums[last]
+			last++
+		}
+	}
 }
 ```
 
