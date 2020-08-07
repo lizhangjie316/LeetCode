@@ -212,25 +212,7 @@ class Solution {  //斐波那契数列
 //JavaScript
 ```
 
--  [ https://leetcode-cn.com/problems/two-sum/](https://leetcode-cn.com/problems/two-sum/)  (两数之和)
-
-```java
-//java
-```
-
-```python
-# python
-```
-
-```go
-// go
-```
-
-```javascript
-//JavaScript
-```
-
--  [https://leetcode-cn.com/problems/3sum/ ](https://leetcode-cn.com/problems/3sum/)(高频老题） 
+-  [https://leetcode-cn.com/problems/two-sum/](https://leetcode-cn.com/problems/two-sum/)  (两数之和)
 
 ```java
 //java
@@ -253,6 +235,25 @@ class Solution {
         return null;
     }
 }
+```
+
+```python
+# python
+```
+
+```go
+// go
+```
+
+```javascript
+//JavaScript
+```
+
+-  [https://leetcode-cn.com/problems/3sum/ ](https://leetcode-cn.com/problems/3sum/)(高频老题） 
+
+```java
+//java
+
 ```
 
 ```python
