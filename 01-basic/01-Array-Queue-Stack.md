@@ -106,34 +106,6 @@ class Solution { //java实现
     }
 }
 ```
--  https://leetcode-cn.com/problems/move-zeroes/
-
-```java
-//java
-class Solution {
-    public void moveZeroes(int[] nums)  {
-        int length;
-        if (nums == null || (length = nums.length) == 0) {
-            return;
-        }
-        int j = 0;
-        for (int i = 0; i < length; i++) {
-            //i进行后续探索，j进行延后的定位，始终指向下一个存储位置
-            if (nums[i] != 0) {//非0，则进行交换
-                if (i > j) {
-                    nums[j] = nums[i];
-                    nums[i] = 0;
-                }
-                j++;
-            }
-        }
-    }
-}
-```
-
-```python
-# python
-```
 
 ```go
 // go
@@ -171,6 +143,56 @@ func max(a, b int) int{
 }
 ```
 
+
+-  https://leetcode-cn.com/problems/move-zeroes/
+
+```java
+//java
+class Solution {
+    public void moveZeroes(int[] nums)  {
+        int length;
+        if (nums == null || (length = nums.length) == 0) {
+            return;
+        }
+        int j = 0;
+        for (int i = 0; i < length; i++) {
+            //i进行后续探索，j进行延后的定位，始终指向下一个存储位置
+            if (nums[i] != 0) {//非0，则进行交换
+                if (i > j) {
+                    nums[j] = nums[i];
+                    nums[i] = 0;
+                }
+                j++;
+            }
+        }
+    }
+}
+```
+
+```python
+# python
+```
+
+```go
+// go
+func moveZeroes(nums []int)  {
+	if len(nums) < 2 {
+		return
+	}
+
+	last := -1
+	for i, n := range nums {
+		if n == 0 && last == -1 {
+			last = i
+		}
+		if n != 0 && last != -1 {
+			nums[last], nums[i] = nums[i], nums[last]
+			last++
+		}
+	}
+}
+```
+
 ```javascript
 //JavaScript
 ```
@@ -201,6 +223,16 @@ class Solution {  //斐波那契数列
 ```
 
 ```python
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        reslut =  list(range(n+1))
+        for i in range(1,n+1):
+            if i == 1:
+                reslut[i] = 1
+            elif i == 2:
+                reslut[i] = 2
+            else: reslut[i] = reslut[i-1] + reslut[i-2]
+        return reslut[-1]
 # python
 ```
 
