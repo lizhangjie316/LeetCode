@@ -223,6 +223,16 @@ class Solution {  //斐波那契数列
 ```
 
 ```python
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        reslut =  list(range(n+1))
+        for i in range(1,n+1):
+            if i == 1:
+                reslut[i] = 1
+            elif i == 2:
+                reslut[i] = 2
+            else: reslut[i] = reslut[i-1] + reslut[i-2]
+        return reslut[-1]
 # python
 ```
 
