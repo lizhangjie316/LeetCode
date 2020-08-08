@@ -238,6 +238,17 @@ class Solution:
 
 ```go
 // go
+func climbStairs(n int) int {
+    p := 0
+	q := 0
+	r := 1
+	for i := 1; i <= n; i++ {
+		p = q
+		q = r
+		r = p + q
+	}
+	return r
+}
 ```
 
 ```javascript
@@ -296,6 +307,16 @@ class Solution3 { //66ms 39.9M
 
 ```go
 // go
+func twoSum(nums []int, target int) []int {
+	m := make(map[int]int)
+	for i, v := range nums {
+		if j, ok := m[target - v]; ok && i != j {
+			return []int{i, j}
+		}
+		m[v] = i
+	}
+	return []int{}
+}
 ```
 
 ```javascript
