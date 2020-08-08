@@ -107,6 +107,21 @@ class Solution { //java实现
 }
 ```
 
+```python
+//python
+class Solution:
+    def maxArea(self, height: List[int]) -> int:
+        s1_index, s2_index, res = 0, len(height) - 1, 0
+        while s1_index < s2_index:
+            if height[s1_index] < height[s2_index]:
+                res = max(res, height[s1_index] * (s2_index - s1_index))
+                s1_index += 1
+            else:
+                res = max(res, height[s2_index] * (s2_index - s1_index))
+                s2_index -= 1
+        return res
+```
+
 ```go
 // go
 func maxArea(height []int) int {
