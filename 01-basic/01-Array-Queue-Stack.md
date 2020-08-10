@@ -185,7 +185,40 @@ class Solution {
 ```
 
 ```python
-# python
+// python 列表操作
+class Solution:
+    def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        a1 = [] #   记录非0元素
+        a2 = [] #   记录为0的元素
+        for i in nums:  #   遍历list
+            if i == 0:
+                a2.append(i)    #   将为0的元素添加到a2
+            else:
+                a1.append(i)    #   将非0元素添加到a1
+        nums.clear()    #   清空原列表
+        nums.extend(a1 + a2)    #   将两个列表合并到nums中
+// 双指针法
+    def moveZeroes_1(self, nums):
+            """
+            :type nums: List[int]
+            :rtype: None Do not return anything, modify nums in-place instead.
+            """
+            if not nums:
+                return 0
+            # 第一次遍历的时候，j指针记录非0的个数，只要是非0的统统都赋给nums[j]
+            j = 0
+            for i in range(len(nums)):
+                if nums[i]:
+                    nums[j] = nums[i]
+                    j += 1
+            # 非0元素统计完了，剩下的都是0了
+            # 所以第二次遍历把末尾的元素都赋为0即可
+            for i in range(j,len(nums)):
+                nums[i] = 0
+
 ```
 
 ```go
