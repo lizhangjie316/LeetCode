@@ -384,6 +384,48 @@ func twoSum(nums []int, target int) []int {
 
 ```go
 // go
+import "sort"
+
+func threeSum(nums []int) [][]int {
+	length := len(nums)
+	if length < 3 {
+		return nil
+	}
+	sort.Ints(nums)
+
+	result := [][]int{}
+	for i := 0; i < length-2; i++ {
+		for i != 0 && nums[i] == nums[i-1] && i < length-2 {
+			i++
+		}
+		target := 0 - nums[i]
+		l := i + 1
+		r := length - 1
+		for l < r {
+			if nums[l]+nums[r] == target {
+				result = append(result, []int{nums[i], nums[l], nums[r]})
+				l++
+				r--
+				for nums[l] == nums[l-1] && nums[r] == nums[r+1] && l < r {
+					l++
+					r--
+				}
+			} else if nums[l]+nums[r] < target {
+				l++
+				for nums[l] == nums[l-1] && l < r {
+					l++
+				}
+			} else {
+				r--
+				for nums[r] == nums[r+1] && l < r {
+					r--
+				}
+			}
+		}
+	}
+	return result
+}
+
 ```
 
 ```javascript
