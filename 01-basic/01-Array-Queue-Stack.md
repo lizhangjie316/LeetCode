@@ -351,6 +351,16 @@ class Solution3 { //66ms 39.9M
 
 ```python
 # python
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashmap = {}
+        for ind, num in enumerate(nums):    # 生成字典
+            hashmap[num] = ind
+
+        for i, num in enumerate(nums):
+            j = hashmap.get(target - num)  # 获取指定键值
+            if j is not None and i != j and i < j:  # 如果j不为空且i和j不相等且i小于j
+                return [i, j]   # 返回和为target的索引
 ```
 
 ```go
@@ -441,6 +451,56 @@ class Solution4 {
 
 ```python
 # python
+class Solution:
+    '''
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        
+        # 基于两数之和改编的方法，会超出限制。
+        # :param nums:
+        # :return:
+        
+        nums.sort()  # 排序
+        hashmap = {}
+        for ind, num in enumerate(nums):  # 生成字典
+            hashmap[num] = ind
+        result = []
+        for i, num in enumerate(nums):
+            for j, num1 in enumerate(nums):
+                k = hashmap.get(0 - num - num1)  # 获取指定键值
+                if k is not None and i != j and i < j and i != k and j != k and j < k:  # 如果j不为空且i和j不相等且i小于j
+                    cur_res = [num, num1, nums[k]]
+                    if cur_res not in result:
+                        result.append(cur_res)  # 返回和为target的索引
+                    else:
+                        pass
+        return result
+        '''
+    def threeSum(self, nums: List[int]) -> List[List[int]]:
+        if len(nums) < 3:   #   当nums中元素小于3时，直接返回空值。
+            return []
+        '''先对数组排序, 遍历数组遇到与前一个元素相同的情况可直接跳过'''
+        nums.sort()
+        curr_hash = {-x: i for i, x in enumerate(nums)}
+        res = []
+        res_hash = {}
+        for i, first in enumerate(nums):
+            '''当前元素与前一个元素相同时, 可直接跳过以优化性能'''
+            if i > 0 and first == nums[i - 1]:
+                continue
+            for j, second in enumerate(nums[i + 1:]):
+                '''检查两数之和是否存在于哈希表中'''
+                if first + second in curr_hash:
+                    curr_index = curr_hash[first + second]
+                    if curr_index == i or curr_index == i + j + 1:
+                        continue
+                    '''将找到的结果存入另一个哈希表中, 避免包含重复结果'''
+                    row = sorted([first, second, nums[curr_index]])
+                    key = ",".join([str(x) for x in row])
+                    if key not in res_hash:
+                        res.append(row)
+                        res_hash[key] = True
+        return res
+
 ```
 
 ```go
