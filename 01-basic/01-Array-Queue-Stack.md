@@ -499,6 +499,24 @@ func threeSum(nums []int) [][]int {
 
 · https://leetcode.com/problems/reverse-linked-list/
 
+```go
+func reverseList(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil {
+		return head
+	}
+	slow, fast := head, head.Next
+	for fast != nil {
+		tmp := fast.Next
+		fast.Next = slow
+		slow = fast
+		fast = tmp
+	}
+	head.Next = nil
+	return slow
+}
+
+```
+
 · https://leetcode.com/problems/swap-nodes-in-pairs
 
 · https://leetcode.com/problems/linked-list-cycle  * 
