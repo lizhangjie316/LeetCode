@@ -582,6 +582,7 @@ class Solution {//画个图就出来了
 
 
 ```go
+//go
 func reverseList(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil {
 		return head
@@ -638,6 +639,7 @@ class Solution1 {
 
 
 ```go
+//go
 func swapPairs(head *ListNode) *ListNode {
 	if head == nil || head.Next == nil{
 		return head
@@ -662,7 +664,26 @@ func swapPairs(head *ListNode) *ListNode {
 }
 ```
 
-· https://leetcode.com/problems/linked-list-cycle  * 
+· https://leetcode.com/problems/linked-list-cycle  
+
+```go
+//go
+func hasCycle(head *ListNode) bool {
+	if head == nil{
+		return false
+	}
+	slow := head
+	fast := head.Next
+	for fast != nil && fast.Next != nil{
+		if slow == fast{
+			return true
+		}
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+	return false
+}
+```
 
 · https://leetcode.com/problems/linked-list-cycle-ii
 
