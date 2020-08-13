@@ -539,8 +539,42 @@ func reverseList(head *ListNode) *ListNode {
 
 ```
 
-
 · https://leetcode.com/problems/swap-nodes-in-pairs
+
+```java
+class Solution1 {
+    //交换相邻的两个
+    public ListNode swapPairs(ListNode head) {
+        if (head==null || head.next==null) {
+            return head;
+        }
+        //确保有两个节点了
+        ListNode cur = head;
+        ListNode pre = cur.next;
+        ListNode back = null;
+        head = cur.next;
+        //返回的头已经确定
+        while (cur!=null || pre!=null){
+            //交换
+            cur.next = pre.next;
+            pre.next = cur;
+            if (cur.next == null || cur.next.next==null){
+                break;
+            }else {//cur往前走了，但原本的cur.next无法连到下一轮的上面
+                //能进到这里面说明是偶数个，需要进行偶奇相连，用back.next来提前连接好
+                back = cur;
+                cur = cur.next;
+                pre = cur.next;
+                back.next = pre;
+            }
+        }
+
+        return head;
+    }
+}
+```
+
+
 
 
 ```go
