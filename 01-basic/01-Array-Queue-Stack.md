@@ -542,6 +542,32 @@ func reverseList(head *ListNode) *ListNode {
 
 · https://leetcode.com/problems/swap-nodes-in-pairs
 
+
+```go
+func swapPairs(head *ListNode) *ListNode {
+	if head == nil || head.Next == nil{
+		return head
+	}
+	newHead := &ListNode{}
+	newHead.Next = head
+	h := newHead
+	p := head
+	q := head.Next
+	for q != nil{
+		p.Next = q.Next
+		q.Next = p
+		h.Next = q
+		h = p
+		p = p.Next
+		if p == nil{
+			break
+		}
+		q = p.Next
+	}
+	return newHead.Next
+}
+```
+
 · https://leetcode.com/problems/linked-list-cycle  * 
 
 · https://leetcode.com/problems/linked-list-cycle-ii
