@@ -52,7 +52,7 @@
 
 ### Linked List 实战题目
 
-· https://leetcode.com/problems/reverse-linked-list/
+· https://leetcode.com/problems/reverse-linked-list/     https://leetcode-cn.com/problems/fan-zhuan-lian-biao-lcof/
 
 · https://leetcode.com/problems/swap-nodes-in-pairs
 

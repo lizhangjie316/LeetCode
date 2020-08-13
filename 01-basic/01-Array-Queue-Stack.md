@@ -499,6 +499,26 @@ func threeSum(nums []int) [][]int {
 
 · https://leetcode.com/problems/reverse-linked-list/
 
+```java
+class Solution {//画个图就出来了
+    public ListNode reverseList(ListNode head) {
+        ListNode cur = null;
+        ListNode pre = head;
+        while (pre != null){
+            ListNode tmp = pre.next; //探索者
+            pre.next = cur;
+            cur = pre;
+            pre = tmp;
+        }
+        return cur;
+    }
+}
+
+//递归的方式
+```
+
+
+
 · https://leetcode.com/problems/swap-nodes-in-pairs
 
 · https://leetcode.com/problems/linked-list-cycle  * 
