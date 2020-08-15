@@ -889,6 +889,25 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 
 · https://leetcode-cn.com/problems/merge-sorted-array/
 
+```go
+//go
+func merge(nums1 []int, m int, nums2 []int, n int) {
+	k := m + n
+	for i := k - 1; i >= 0; i-- {
+		if n == 0 {
+			break
+		}
+		if m > 0 && nums1[m-1] > nums2[n-1] {
+			nums1[i] = nums1[m-1]
+			m--
+		} else {
+			nums1[i] = nums2[n-1]
+			n--
+		}
+	}
+}
+```
+
 · https://leetcode-cn.com/problems/two-sum/
 
 · https://leetcode-cn.com/problems/move-zeroes/
