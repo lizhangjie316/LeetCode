@@ -780,6 +780,7 @@ func detectCycle(head *ListNode) *ListNode {
 · https://leetcode.com/problems/reverse-nodes-in-k-group/
 
 ```go
+//go
 func reverseKGroup(head *ListNode, k int) *ListNode {
 	hair := &ListNode{Next: head}
 	pre := hair
@@ -818,6 +819,20 @@ func myReverse(head, tail *ListNode) (*ListNode, *ListNode) {
 # 4. 课后作业
 
 · https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
+
+```go
+//go
+location := 1
+    ll := len(nums)
+    for i := 1;i < ll; i++ {
+        if nums[i] == nums[i - 1]{
+            continue
+        } 
+        nums[location] = nums[i]
+        location++
+    }
+    return location
+```
 
 · https://leetcode-cn.com/problems/rotate-array/
 
