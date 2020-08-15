@@ -836,6 +836,29 @@ location := 1
 
 · https://leetcode-cn.com/problems/rotate-array/
 
+```go
+//go
+func rotate(nums []int, k int)  {
+	if nums == nil || len(nums) == 0{
+		return
+	}
+	length := len(nums)
+	k %= k % length
+	reverse(nums, 0, length - k - 1)
+	
+	reverse(nums, length - k - 1, length - 1)
+	reverse(nums, 0 , length - 1)
+}
+
+func reverse(nums []int, i, j int){
+	for i < j{
+		nums[i], nums[j] = nums[j], nums[i]
+		i++
+		j--
+	}
+}
+```
+
 · https://leetcode-cn.com/problems/merge-two-sorted-lists/
 
 · https://leetcode-cn.com/problems/merge-sorted-array/
