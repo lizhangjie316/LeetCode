@@ -861,6 +861,32 @@ func reverse(nums []int, i, j int){
 
 · https://leetcode-cn.com/problems/merge-two-sorted-lists/
 
+
+```go
+//go
+func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
+    head := &ListNode{}
+	
+	p := head
+	for l1 != nil && l2 != nil{
+		if l1.Val <= l2.Val{
+			p.Next = l1
+			l1 = l1.Next
+		}else{
+			p.Next = l2
+			l2 = l2.Next
+		}
+		p = p.Next
+	}
+	if l1 == nil{
+		p.Next = l2
+	}else{
+		p.Next = l1
+	}
+	return head.Next
+}
+```
+
 · https://leetcode-cn.com/problems/merge-sorted-array/
 
 · https://leetcode-cn.com/problems/two-sum/
