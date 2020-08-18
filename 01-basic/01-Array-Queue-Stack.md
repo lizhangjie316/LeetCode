@@ -7,8 +7,7 @@
 **参考完成：**
 
 - [labuladong的算法小抄 第二章数据结构系列](https://labuladong.gitbook.io/algo/)    [专栏地址](https://labuladong.gitbook.io/algo/)
-
-- [CyC2018的Leetcode题解中的数据结构相关]([https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode%20%E9%A2%98%E8%A7%A3%20-%20%E7%9B%AE%E5%BD%95.md](https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode 题解 - 目录.md))
+- [CyC2018题解目录](https://github.com/CyC2018/CS-Notes/blob/master/notes/Leetcode 题解 - 目录.md)
 
 - [Java算法4红宝书]()
 
