@@ -907,17 +907,58 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 }
 ```
 
-· https://leetcode-cn.com/problems/two-sum/
-
-· https://leetcode-cn.com/problems/move-zeroes/
-
 · https://leetcode-cn.com/problems/plus-one/
 
-
+```go
+//go
+func plusOne(digits []int) []int {
+	if digits == nil {
+		return digits
+	}
+	i := len(digits) - 1
+	digits[i] += 1
+	i--
+	for ; i >= 0; i-- {
+		if digits[i + 1] > 9 {
+			digits[i + 1] %= 10
+			digits[i] += 1
+		} else {
+			break
+		}
+	}
+	if digits[0] > 9{
+		digits[0] %= 10
+		digits = append([]int{1}, digits...)
+	}
+	return digits
+}
+```
 
 ## **栈预习题目**
 
 · https://leetcode-cn.com/problems/valid-parentheses/
+
+```go
+//go
+func isValid(s string) bool {
+	hash := map[byte]byte{')':'(', ']':'[', '}':'{'}
+	stack := make([]byte, 0)
+	if s == "" {
+		return true
+	}
+
+	for i := 0; i < len(s); i++ {
+		if s[i] == '(' || s[i] == '[' || s[i] == '{' {
+			stack = append(stack, s[i])
+		} else if len(stack) > 0 && stack[len(stack)-1] == hash[s[i]] {
+			stack = stack[:len(stack)-1]
+		} else {
+			return false
+		}
+	}
+	return len(stack) == 0
+}
+```
 
 · https://leetcode-cn.com/problems/min-stack/
 
