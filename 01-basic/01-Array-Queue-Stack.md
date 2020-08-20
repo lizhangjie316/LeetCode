@@ -653,7 +653,20 @@ class Solution1 {
 }
 ```
 
-
+```python
+#python
+class Solution:
+    def swapPairs(self, head: ListNode) -> ListNode:
+        pre = ListNode(-1)
+        pre.next = head
+        c = pre
+        while c.next and c.next.next:
+            a, b = c.next, c.next.next
+            c.next, a.next = b, b.next
+            b.next = a
+            c = c.next.next
+        return pre.next
+```
 
 
 ```go
