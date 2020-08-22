@@ -703,7 +703,37 @@ public class Solution {
 }
 ```
 
-
+```python
+#   python
+class Solution:
+    def hasCycle(self, head):
+        '''
+        使用set
+        '''
+        # 定义一个set，然后不断遍历链表
+        s = set()
+        while head:
+            # 如果某个节点在set中，说明遍历到重复元素了，也就是有环
+            if head in s:
+                return True
+            s.add(head)
+            head = head.next
+        return False
+    
+    def hasCycle(self, head):
+            """
+            快慢指针方法
+            :type head: ListNode
+            :rtype: bool
+            """
+            i1 = i2 = head
+            while i1 and i1.next:
+                i1 = i1.next.next
+                i2 = i2.next
+                if i2 == i1:
+                    return True
+            return False    
+```
 
 ```go
 //go
@@ -746,7 +776,40 @@ class Solution2 {
 }
 ```
 
+```python
+#python
+class Solution(object):
+    def detectCycle(self, head):
+        """
+        :type head: ListNode
+        :rtype: bool
+        """
+        node1 = head  # 走一步
+        node2 = head  # 走两步
+        p = head
 
+        while node1 and node2 and node1.next and node2.next and node2.next.next:    #   将为空的情况全部列举出来
+            node1 = node1.next
+            node2 = node2.next.next
+            if node1 == node2:
+                p = head    #   p指向链表头，这里用node2也可以，此处便于分清
+                while node1 is not p:   #   当 快指针走到f = af=a 步时，慢指针走到步s = a+nbs=a+nb，此时 两指针重合，并同时指向链表环入口 。
+                    p = p.next  #   p指向下一个节点 
+                    node1 = node1.next  #   node1向下走一个
+                return p
+        return None
+
+    def detectCycle(self, head):
+        # 定义一个set，然后不断遍历链表
+        s = set()
+        while head:
+            # 如果某个节点在set中，说明遍历到重复元素了，也就是有环
+            if head in s:
+                return head
+            s.add(head)
+            head = head.next
+        return None
+```
 
 ```go
 //go
