@@ -621,34 +621,20 @@ func reverseList(head *ListNode) *ListNode {
 · https://leetcode.com/problems/swap-nodes-in-pairs
 
 ```java
-class Solution1 {
-    //交换相邻的两个
-    public ListNode swapPairs(ListNode head) {
-        if (head==null || head.next==null) {
-            return head;
+class Solution {
+    public ListNode swapPairs(ListNode head) { //实际上使用了四个指针
+        ListNode pre = new ListNode(0);
+        pre.next = head;
+        ListNode temp = pre;
+        while(temp.next != null && temp.next.next != null) {  //头插法
+            ListNode start = temp.next;
+            ListNode end = temp.next.next;
+            temp.next = end;
+            start.next = end.next;
+            end.next = start;
+            temp = start;
         }
-        //确保有两个节点了
-        ListNode cur = head;
-        ListNode pre = cur.next;
-        ListNode back = null;
-        head = cur.next;
-        //返回的头已经确定
-        while (cur!=null || pre!=null){
-            //交换
-            cur.next = pre.next;
-            pre.next = cur;
-            if (cur.next == null || cur.next.next==null){
-                break;
-            }else {//cur往前走了，但原本的cur.next无法连到下一轮的上面
-                //能进到这里面说明是偶数个，需要进行偶奇相连，用back.next来提前连接好
-                back = cur;
-                cur = cur.next;
-                pre = cur.next;
-                back.next = pre;
-            }
-        }
-
-        return head;
+        return pre.next;
     }
 }
 ```
@@ -711,7 +697,7 @@ public class Solution {
                 return false;
             }
         }
-
+		
         return true;
     }
 }
@@ -774,7 +760,7 @@ func hasCycle(head *ListNode) bool {
 class Solution2 {
     public ListNode detectCycle(ListNode head) {
         ListNode fast = head, slow = head;
-        while (true) {
+        while (true) { //只能有一个退出循环条件
             if (fast == null || fast.next == null) return null;
             fast = fast.next.next;
             slow = slow.next;
@@ -821,6 +807,51 @@ func detectCycle(head *ListNode) *ListNode {
 
 · https://leetcode.com/problems/reverse-nodes-in-k-group/
 
+```java
+class Solution21 {
+    public ListNode reverseKGroup(ListNode head, int k) {
+        ListNode temp = new ListNode(0);
+        temp.next = head;
+
+        ListNode pre = temp;
+        ListNode end = temp;
+        while (end.next != null) {
+            ListNode start = pre.next;
+            for (int i = 0; i<k && end!=null ; i++) {
+                end = end.next;
+            }
+            if (end == null) {
+                break;
+            }
+            ListNode endNext = end.next;
+            end.next = null;
+            pre.next = reverse(start);
+            //start此时已经是内部链表的尾部
+            start.next = endNext;
+            pre = start;
+            end = start;
+        }
+
+        return temp.next;
+    }
+
+    private ListNode reverse(ListNode head) {
+        //TODO:完成链表翻转，不需要使用头插法
+        ListNode cur = null;    // cur - pre - tmp
+        ListNode pre = head;
+        while (pre != null){
+            ListNode tmp = pre.next; //探索者
+            pre.next = cur;
+            cur = pre;
+            pre = tmp;
+        }
+        return cur;
+    }
+}
+```
+
+
+
 ```go
 //go
 func reverseKGroup(head *ListNode, k int) *ListNode {
@@ -861,6 +892,52 @@ func myReverse(head, tail *ListNode) (*ListNode, *ListNode) {
 # 4. 课后作业
 
 · https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
+
+```java
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        int p = 0;// p进行保留
+        int q = 1;//探索者
+
+        while(q < nums.length) {
+            if (nums[p] != nums[q]) {
+                nums[p+1] = nums[q];
+                p++;
+            }
+            q++;
+        }
+        return p+1;
+    }
+}
+```
+
+
+
+```python
+class Solution:
+	def removeDuplicates(self, nums: List[int]) -> int:
+		length = len(nums)
+		# 利用low来记录
+		low = 0
+
+		if length == 0:
+			return 0
+		else:
+			for i in range(length): # i进行探索
+				if nums[low] == nums[i]:
+					i += 1
+				else:
+					low += 1  # low进行保留
+					nums[low] = nums[i]
+
+		return low+1
+# 对比
+```
+
+
 
 ```go
 //go
