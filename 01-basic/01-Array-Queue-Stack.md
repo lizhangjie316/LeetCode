@@ -717,7 +717,37 @@ public class Solution {
 }
 ```
 
-
+```python
+#   python
+class Solution:
+    def hasCycle(self, head):
+        '''
+        使用set
+        '''
+        # 定义一个set，然后不断遍历链表
+        s = set()
+        while head:
+            # 如果某个节点在set中，说明遍历到重复元素了，也就是有环
+            if head in s:
+                return True
+            s.add(head)
+            head = head.next
+        return False
+    
+    def hasCycle(self, head):
+            """
+            快慢指针方法
+            :type head: ListNode
+            :rtype: bool
+            """
+            i1 = i2 = head
+            while i1 and i1.next:
+                i1 = i1.next.next
+                i2 = i2.next
+                if i2 == i1:
+                    return True
+            return False    
+```
 
 ```go
 //go
