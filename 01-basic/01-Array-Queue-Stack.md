@@ -883,7 +883,47 @@ class Solution21 {
 }
 ```
 
+```python
+class Solution(object):
+    def reverseList(self, head: ListNode) -> ListNode:
+        pre = None
+        cur = head
+        while cur:
+            temp = cur.next  # 先把原来cur.next位置存起来
+            cur.next = pre
+            pre = cur
+            cur = temp
+        return pre
 
+    def reverseKGroup(self, head, k):
+        """
+        :type head: ListNode
+        :type k: int
+        :rtype: ListNode
+        """
+        tep = ListNode(0)
+        tep.next = head
+
+        pre1 = tep
+        end1 = tep
+        while end1.next is not None:    #   循环条件下一个不为空
+            start = pre1.next
+            i = 0
+            while i < k and end1 is not None:   #   根据k的大小设定每次反转个数
+                end1 = end1.next
+                i += 1
+            if end1 is None:    #   当end1不为None时继续，否则退出
+                break
+            endNext = end1.next
+            end1.next = None
+            pre1.next = self.reverseList(start) #   进行反转
+
+            start.next = endNext
+            pre1 = start
+            end1 = start
+
+        return tep.next
+```
 
 ```go
 //go
