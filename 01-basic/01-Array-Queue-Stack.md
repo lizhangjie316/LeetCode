@@ -1007,24 +1007,7 @@ class Solution11 {
 
 
 ```python
-class Solution:
-	def removeDuplicates(self, nums: List[int]) -> int:
-		length = len(nums)
-		# 利用low来记录
-		low = 0
-
-		if length == 0:
-			return 0
-		else:
-			for i in range(length): # i进行探索
-				if nums[low] == nums[i]:
-					i += 1
-				else:
-					low += 1  # low进行保留
-					nums[low] = nums[i]
-
-		return low+1
-# 对比
+#python
 ```
 
 
@@ -1044,6 +1027,34 @@ location := 1
 ```
 
 · https://leetcode-cn.com/problems/rotate-array/
+
+```java
+class Solution20 {
+    public void rotate(int[] nums, int k) {
+        k = k%nums.length;
+        if (nums.length == 0 || nums == null) {
+            return;
+        }
+        int tem = 0;
+        for (int i = 0; i < k; i++) {
+            //每轮向右移动一位
+            nums = rotate(nums);
+        }
+    }
+
+    public int[] rotate(int[] nums) {
+        int tmp = 0;
+        tmp = nums[nums.length-1];
+        for (int i = nums.length-1; i > 0; i--) {
+            nums[i] = nums[i-1];
+        }
+        nums[0] = tmp;
+        return nums;
+    }
+}
+```
+
+
 
 ```go
 //go
