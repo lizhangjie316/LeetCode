@@ -1083,32 +1083,37 @@ func reverse(nums []int, i, j int){
 
 ```java
 //java
-public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-    if (l1 == null) {
-        return l2;
-    }else if (l2 == null) {
-        return l1;
-    }
-    ListNode head = new ListNode();
-    ListNode returnHead = new ListNode();
-    head.next = l1;
-    returnHead = head;
-    ListNode tmp = null;
-    while (l2 != null && l1 != null) {
-        if (l1.val >= l2.val) {//l2插进来
-            tmp = l2.next;
-            l2.next = l1;
-            head.next = l2;
-
-            head = l2;
-            l2 = tmp;
-
-        }else{ //l1.val < l2.val  l1后移一位
-            head = l1;
-            l1 = l1.next;
+class Solution {
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        }else if (l2 == null) {
+            return l1;
         }
+        ListNode head = new ListNode();
+        ListNode returnHead = new ListNode();
+        head.next = l1;
+        returnHead = head;
+        ListNode tmp = null;
+        while (l2 != null && l1 != null) {
+            if (l1.val >= l2.val) {//l2插进来
+                tmp = l2.next;
+                l2.next = l1;
+                head.next = l2;
+                head = l2;
+                l2 = tmp;
+                
+            }else{ //l1.val < l2.val  l1后移一位
+                head = l1;
+                l1 = l1.next;
+            }
+        }
+        if (l1==null) {
+            head.next = l2;
+        }
+
+        return returnHead.next;
     }
-    return returnHead.next;
 }
 ```
 
