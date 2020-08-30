@@ -1193,7 +1193,7 @@ func plusOne(digits []int) []int {
 }
 ```
 
-## **栈预习题目**
+# 5. 栈、队列、优先队列、双端队列预习题目
 
 · https://leetcode-cn.com/problems/valid-parentheses/
 
@@ -1221,13 +1221,13 @@ func isValid(s string) bool {
 
 · https://leetcode-cn.com/problems/min-stack/
 
-## **实战题目**
+# 6. 实战题目
 
 · https://leetcode-cn.com/problems/largest-rectangle-in-histogram
 
 · https://leetcode-cn.com/problems/sliding-window-maximum
 
-## **课后作业**
+# 7. 课后作业
 
 · 用 add first 或 add last 这套新的 API 改写 Deque 的代码
 
@@ -1236,3 +1236,11 @@ func isValid(s string) bool {
 · https://leetcode.com/problems/design-circular-deque
 
 · https://leetcode.com/problems/trapping-rain-water/
+
+
+
+# 8. 哈希表、映射、集合
+
+•	https://leetcode-cn.com/problems/valid-anagram/description/
+
+•	https://leetcode-cn.com/problems/group-anagrams/
