@@ -1240,6 +1240,47 @@ func isValid(s string) bool {
 
 · https://leetcode-cn.com/problems/min-stack/
 
+```go
+type MinStack struct {
+	stack []int
+	minStack []int
+}
+
+/** initialize your data structure here. */
+func ConstructorStack() MinStack {
+	return MinStack{
+		stack: []int{},
+		minStack: []int{math.MaxInt64},
+	}
+}
+
+func (this *MinStack) Push(x int)  {
+	this.stack = append(this.stack, x)
+	top := this.minStack[len(this.minStack)-1]
+	this.minStack = append(this.minStack, min(x, top))
+}
+
+func (this *MinStack) Pop()  {
+	this.stack = this.stack[:len(this.stack)-1]
+	this.minStack = this.minStack[:len(this.minStack)-1]
+}
+
+func (this *MinStack) Top() int {
+	return this.stack[len(this.stack)-1]
+}
+
+func (this *MinStack) GetMin() int {
+	return this.minStack[len(this.minStack)-1]
+}
+
+func min(x, y int) int {
+	if x < y {
+		return x
+	}
+	return y
+}
+```
+
 # 6. 实战题目
 
 · https://leetcode-cn.com/problems/largest-rectangle-in-histogram
@@ -1254,6 +1295,90 @@ func isValid(s string) bool {
 
 · https://leetcode.com/problems/design-circular-deque
 
+```go
+
+type MyCircularDeque struct {
+	capacity   int
+	data       []int
+	head, tail int
+}
+
+/** Initialize your data structure here. Set the size of the deque to be k. */
+func Constructor(k int) MyCircularDeque {
+	return MyCircularDeque{
+		capacity: k + 1,
+		data:     make([]int, k+1),
+		head:     0,
+		tail:     0,
+	}
+}
+
+/** Adds an item at the front of Deque. Return true if the operation is successful. */
+func (this *MyCircularDeque) InsertFront(value int) bool {
+	if this.IsFull() {
+		return false
+	}
+	this.head = (this.head - 1 + this.capacity) % this.capacity
+	this.data[this.head] = value
+
+	return true
+}
+
+/** Adds an item at the rear of Deque. Return true if the operation is successful. */
+func (this *MyCircularDeque) InsertLast(value int) bool {
+	if this.IsFull() {
+		return false
+	}
+	this.data[this.tail] = value
+	this.tail = (this.tail + 1) % this.capacity
+	return true
+}
+
+/** Deletes an item from the front of Deque. Return true if the operation is successful. */
+func (this *MyCircularDeque) DeleteFront() bool {
+	if this.IsEmpty() {
+		return false
+	}
+	this.head = (this.head + 1) % this.capacity
+	return true
+}
+
+/** Deletes an item from the rear of Deque. Return true if the operation is successful. */
+func (this *MyCircularDeque) DeleteLast() bool {
+	if this.IsEmpty() {
+		return false
+	}
+	this.tail = (this.tail - 1 + this.capacity) % this.capacity
+	return true
+}
+
+/** Get the front item from the deque. */
+func (this *MyCircularDeque) GetFront() int {
+	if this.IsEmpty() {
+		return -1
+	}
+	return this.data[this.head]
+}
+
+/** Get the last item from the deque. */
+func (this *MyCircularDeque) GetRear() int {
+	if this.IsEmpty() {
+		return -1
+	}
+	return this.data[(this.tail-1+this.capacity)%this.capacity]
+}
+
+/** Checks whether the circular deque is empty or not. */
+func (this *MyCircularDeque) IsEmpty() bool {
+	return this.head == this.tail
+}
+
+/** Checks whether the circular deque is full or not. */
+func (this *MyCircularDeque) IsFull() bool {
+	return (this.tail+1)%this.capacity == this.head
+}
+```
+
 · https://leetcode.com/problems/trapping-rain-water/
 
 
@@ -1261,5 +1386,35 @@ func isValid(s string) bool {
 # 8. 哈希表、映射、集合
 
 •	https://leetcode-cn.com/problems/valid-anagram/description/
+
+```go
+func isAnagram(s string, t string) bool {
+	if len(s) != len(t){
+		return false
+	}
+	var wg sync.WaitGroup
+	var wordstable_s =  [26]int{}
+	var wordstable_t =  [26]int{}
+	wg.Add(2)
+	go func(){
+		makewordtable(&wordstable_s,s)
+		wg.Done()
+	}()
+	go func(){
+		makewordtable(&wordstable_t,t)
+		wg.Done()
+	}()
+	wg.Wait()
+	return wordstable_s == wordstable_t
+
+}
+
+func makewordtable(wordtable *[26]int, s string) {
+	for i:=0;i<len(s);i++{
+		index := s[i] - 'a'
+		wordtable[index] ++
+	}
+}
+```
 
 •	https://leetcode-cn.com/problems/group-anagrams/
