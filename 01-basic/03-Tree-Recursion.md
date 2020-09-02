@@ -4,7 +4,44 @@
 
 · https://leetcode-cn.com/problems/climbing-stairs/
 
+```go
+func climbStairs(n int) int {
+    p := 0
+	q := 0
+	r := 1
+	for i := 1; i <= n; i++ {
+		p = q
+		q = r
+		r = p + q
+	}
+	return r
+}
+```
+
 · https://leetcode-cn.com/problems/generate-parentheses/
+
+```go
+func generateParenthesis(n int) []string {
+	Output := new([]string)
+	_generate(0, 0, n, "", Output)
+	return *Output
+}
+
+func _generate(left int, right int, max int, s string, Output *[]string){
+	// 递归终止条件
+	if left == right && left ==  max{
+		*Output = append(*Output, s)
+		return
+	}
+	// 递归主体
+	if left < max{
+		_generate(left+1, right, max, s + "(", Output)
+	}
+	if right < left{
+		_generate(left, right+1,  max, s + ")", Output)
+	}
+}
+```
 
 · https://leetcode-cn.com/problems/invert-binary-tree/description/
 
