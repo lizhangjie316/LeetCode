@@ -1240,6 +1240,21 @@ func merge(nums1 []int, m int, nums2 []int, n int) {
 
 · https://leetcode-cn.com/problems/plus-one/
 
+```java
+//java
+public int[] plusOne(int[] digits) {
+    for (int i = digits.length-1; i >= 0; i--) {
+        digits[i]++;
+        digits[i] = digits[i]%10;
+        //什么时候需要进位？
+        if (digits[i]!=0) return digits;
+    }
+    digits = new int[digits.length+1];
+    digits[0] = 1;
+    return digits;
+}
+```
+
 ```go
 //go
 func plusOne(digits []int) []int {
