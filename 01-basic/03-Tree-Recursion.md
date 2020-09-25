@@ -44,11 +44,59 @@ func _generate(left int, right int, max int, s string, Output *[]string){
 ```
 
 · https://leetcode-cn.com/problems/invert-binary-tree/description/
+```go
+func invertTree(root *TreeNode) *TreeNode {
+	invert(root)
+	return root
+}
+
+func invert(node *TreeNode){
+	if node == nil || (node.Left == nil && node.Right == nil){
+		return
+	}
+	temp := node.Left
+	node.Left = node.Right
+	node.Right = temp
+	invert(node.Left)
+	invert(node.Right)
+}
+```
 
 · https://leetcode-cn.com/problems/validate-binary-search-tree
 
+```go
+func isValidBST(root *TreeNode) bool {
+	return helper(root, math.MinInt64, math.MaxInt64)
+}
+
+func helper(root *TreeNode, lower, upper int) bool {
+	if root == nil {
+		return true
+	}
+	if root.Val <= lower || root.Val >= upper {
+		return false
+	}
+	return helper(root.Left, lower, root.Val) && helper(root.Right, root.Val, upper)
+}
+```
+
 · https://leetcode-cn.com/problems/maximum-depth-of-binary-tree
 
+```go
+func maxDepth(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	return max(maxDepth(root.Left), maxDepth(root.Right)) + 1
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	}
+	return b
+}
+```
 · https://leetcode-cn.com/problems/minimum-depth-of-binary-tree
 
 · https://leetcode-cn.com/problems/serialize-and-deserialize-binary-tree/
