@@ -184,6 +184,7 @@ func (this *Codec) rdeserialize() *TreeNode {
 
 · https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
 ```go
+//go语言
 func lowestCommonAncestor(root, p, q *model.TreeNode) *model.TreeNode {
 	if root == nil || root == p || root == q {
 		return root
