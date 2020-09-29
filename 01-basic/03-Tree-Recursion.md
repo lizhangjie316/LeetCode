@@ -183,6 +183,22 @@ func (this *Codec) rdeserialize() *TreeNode {
 ## 课后作业
 
 · https://leetcode-cn.com/problems/lowest-common-ancestor-of-a-binary-tree/
+```go
+func lowestCommonAncestor(root, p, q *model.TreeNode) *model.TreeNode {
+	if root == nil || root == p || root == q {
+		return root
+	}
+	left := lowestCommonAncestor(root.Left, p, q)
+	right := lowestCommonAncestor(root.Right, p, q)
+	if left == nil {
+		return right
+	}
+	if right == nil {
+		return left
+	}
+	return root
+}
+```
 
 · https://leetcode-cn.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal
 
