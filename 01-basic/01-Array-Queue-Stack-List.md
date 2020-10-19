@@ -1190,7 +1190,7 @@ public static void merge2(int[] nums1, int m, int[] nums2, int n) {
         System.arraycopy(arr,i,nums1,i+j,m+n-i-j);
     }
     if (j<n) {
-        //此时arr已经完成
+        //此时arr已经完成，可以省略，因为num1后面是剩下的排好序的数组，故可以不用管
         System.arraycopy(nums2,j,nums1,i+j,m+n-i-j);
     }
 }
@@ -1246,7 +1246,7 @@ public int[] plusOne(int[] digits) {
     for (int i = digits.length-1; i >= 0; i--) {
         digits[i]++;
         digits[i] = digits[i]%10;
-        //什么时候需要进位？
+        //什么时候需要进位？ digits[i]+1==10时，进行进位
         if (digits[i]!=0) return digits;
     }
     digits = new int[digits.length+1];
@@ -1283,6 +1283,27 @@ func plusOne(digits []int) []int {
 # 5. 栈、队列、优先队列、双端队列预习题目
 
 · https://leetcode-cn.com/problems/valid-parentheses/
+
+```java
+public static boolean isValid(String s) {
+    if (s.length()%2==1)    return false;
+
+    Stack<Character> stack = new Stack();
+    for (char c:s.toCharArray()) {
+        if (c == '(') {
+            stack.push(')');
+        } else if (c == '[') {
+            stack.push(']');
+        } else if (c == '{') {
+            stack.push('}');
+        } else if (stack.isEmpty() || c != stack.pop()) {
+            return false;
+        }
+    }
+
+    return stack.isEmpty() ;
+}
+```
 
 ```go
 //go
